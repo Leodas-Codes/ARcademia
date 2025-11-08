@@ -1,0 +1,30 @@
+modules = ["python-3.11"]
+[agent]
+expertMode = true
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "ARcademia VR Loader"
+
+[[workflows.workflow]]
+name = "ARcademia VR Loader"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python main.py"
+
+[workflows.workflow.metadata]
+outputType = "vnc"
+
+[nix]
+channel = "stable-25_05"
+packages = ["udev", "xorg.libX11", "xorg.libXcursor", "xorg.libXrandr", "xorg.libXi", "xorg.libXext", "xorg.libXfixes", "xorg.libXrender", "xorg.libXinerama", "mesa", "libGL", "gcc", "libgcc", "espeak"]
